@@ -8,8 +8,26 @@
 <body>
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
+    <h2>My Profile</h2>
+        <p th:text="${name}"></p>
+        <p th:text="${skintype}"></p>
+        <p th:text="${manipedi}"></p>
 </div>
 <div id = "servicesMenu">
+    <th:block >
+        <table>
+            <tr>
+                <th>Facial Option</th>
+            </tr>
+            <tr th:each="facial: ${appropriateFacials}">
+                <td th:text="${facial}" ></td>
+            </tr>
+        </table>
+    </th:block>
+    <th:block th:if = "${manipedi.equals('manicure')}">
+    <p th:replace = "fragments :: manicureDescription "></p>
+    </th:block>
+
 </div>
 </body>
 </html>
